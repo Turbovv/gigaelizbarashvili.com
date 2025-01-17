@@ -78,6 +78,13 @@ export const softwares = createTable("software", {
   tags: varchar("tags", { length: 255 }).notNull(),
 });
 
+export const hostings = createTable("hosting", {
+  id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+  name: varchar("name", { length: 255 }).notNull(),
+  desc: varchar("desc", { length: 255 }).notNull(),
+  tags: varchar("tags", { length: 255 }).notNull(),
+});
+
 export const accounts = createTable(
   "account",
   {

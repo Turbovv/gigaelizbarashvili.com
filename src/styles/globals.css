@@ -5,3 +5,41 @@ body {
     overflow: hidden;
   }
   
+  .custom-scroll {
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #6c63ff #2e2e2e; /* For Firefox */
+  }
+  
+  .custom-scroll::-webkit-scrollbar {
+    width: 40px; /* Width of the vertical scrollbar */
+    height: 10px; /* Height of the horizontal scrollbar */
+  }
+  
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #6c63ff, #4e46d3); /* Gradient for the thumb */
+    border-radius: 10px; /* Rounded corners */
+    border: 2px solid #2e2e2e; /* Border to blend with the track */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+  }
+  
+  .custom-scroll::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #4e46d3, #6c63ff); /* Hover effect */
+  }
+  
+  .custom-scroll::-webkit-scrollbar-track {
+    background-color: #2e2e2e; /* Track background */
+    border-radius: 10px; /* Rounded track */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Inset shadow for depth */
+  }
+  
+  .custom-scroll::-webkit-scrollbar-corner {
+    background: #2e2e2e; /* Corner area (for both scrollbars meeting) */
+  }
+  
+  /* Hide the scrollbar buttons (arrows) */
+  .custom-scroll::-webkit-scrollbar-button {
+    display: none; /* Completely hides the arrow buttons */
+    height: 0; /* Ensures no space is taken up vertically */
+    width: 0; /* Ensures no space is taken up horizontally */
+  }
+  
