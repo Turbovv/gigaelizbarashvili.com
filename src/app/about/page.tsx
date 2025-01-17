@@ -3,10 +3,15 @@ import { api } from "../../trpc/react";
 import Lines from "./lines";
 
 export default function About() {
-  const { data: skillsData, isLoading, error } = api.skills.getSkills.useQuery();
+  const { data: skillsData, isLoading: isLoadingSkills, error: skillsError } =
+    api.skills.getSkills.useQuery();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  const { data: interestsData, isLoading: isLoadingInterests, error: interestsError } =
+    api.interests.getInterests.useQuery();
+
+  if (isLoadingSkills || isLoadingInterests) return <div>Loading...</div>;
+  if (skillsError || interestsError)
+    return <div>Error: {skillsError?.message || interestsError?.message}</div>;
 
   const skills = skillsData?.reduce(
     (acc, skill) => {
@@ -33,17 +38,27 @@ export default function About() {
       }
     : { languages: [], frameworks: [], databases: [], tools: [] };
 
-  const codeContent = `// Top Skills
+  const uniqueInterests = interestsData
+    ? Array.from(new Set(interestsData.flat()))
+    : [];
+  const codeContent = `
 const skills = {
-  languages: [${uniqueSkills.languages.map((lang) => `'${lang}'`).join(", ")}],
+  languages: [${uniqueSkills.languages.map(
+    (lang) => `'${lang}'`
+  )}],
   frameworks: [
-    ${uniqueSkills.frameworks.map((framework) => `'${framework}'`).join(",\n    ")}
+    ${uniqueSkills.frameworks.map((framework) => `'${framework}'`).join(",\n")}
   ],
-  databases: [${uniqueSkills.databases.map((db) => `'${db}'`).join(", ")}],
-  tools: [
-    ${uniqueSkills.tools.map((tool) => `'${tool}'`).join(",\n    ")}
-  ]
-}`;
+  databases: [${uniqueSkills.databases.map((db) => `'${db}'`)}],
+  tools: [${uniqueSkills.tools.map((tool) => `'${tool}'`)}],
+};
+
+const interests =[
+${uniqueInterests.map((interest) => `'${interest}'`).join(",\n  ")}
+]
+;
+
+`;
 
   return (
     <div
@@ -55,14 +70,21 @@ const skills = {
         borderRadius: "8px",
         alignItems: "flex-start",
       }}
+      className="overflow-y-auto"
     >
       <Lines content={codeContent} />
 
       <div style={{ whiteSpace: "pre-wrap", wordBreak: "break-word", margin: 0 }}>
         <div>
-          <span style={{ color: "rgba(118, 124, 157, 0.69)", fontStyle: "italic" }}>
+        <p style={{ color: "rgb(145, 180, 213)" }}>
+            const <span className="text-white">PROFESSION </span> = <span style={{ color: "rgb(93, 228, 199)" }}>'Software Developer'</span>
+          </p>
+          <p style={{ color: "rgb(145, 180, 213)" }}>
+            const <span className="text-white">LOCATION </span> = <span style={{ color: "rgb(93, 228, 199)" }}>'Georgia, Rustavi'</span>
+          </p><br />
+          <p style={{ color: "rgba(118, 124, 157, 0.69)", fontStyle: "italic" }}>
             // Top Skills
-          </span>
+          </p>
           <p style={{ color: "rgb(145, 180, 213)" }}>
             const <span className="text-white">skills</span> = &#123;
           </p>
@@ -102,19 +124,30 @@ const skills = {
             </p>
             <p>
               <span style={{ color: "rgb(173, 215, 255)" }}>tools</span>: [
+              <span style={{ color: "rgb(93, 228, 199)" }}>
+                {uniqueSkills.tools.map((tool, idx) => `'${tool}'`).join(", ")}
+              </span>
+              ],
             </p>
-            <div style={{ paddingLeft: "20px" }}>
-              {uniqueSkills.tools.map((tool, idx) => (
-                <p key={idx}>
-                  <span style={{ color: "rgb(93, 228, 199)" }}>
-                    '{tool}'{idx < uniqueSkills.tools.length - 1 ? "," : ""}
-                  </span>
-                </p>
-              ))}
-            </div>
-            <p>]</p>
           </div>
-          <p style={{ color: "#9cdcfe" }}>&#125;</p>
+          <p style={{ color: "#9cdcfe" }}>&#125;</p><br />
+
+          <p style={{ color: "rgba(118, 124, 157, 0.69)", fontStyle: "italic" }}>
+          // Fun Facts
+          </p>
+          <p style={{ color: "rgb(145, 180, 213)" }}>
+            const <span style={{ color: "rgb(145, 180, 213)" }}>interests</span> = [
+          </p>
+          <div style={{ paddingLeft: "20px" }}>
+            {uniqueInterests.map((interest, idx) => (
+              <p key={idx}>
+                <span style={{ color: "rgb(93, 228, 199)" }}>
+                  '{interest.name}'{idx < uniqueInterests.length - 1 ? "," : ""} <br />
+                </span>
+              </p>
+            ))}
+          </div>
+          <p>];</p>
         </div>
       </div>
     </div>

@@ -22,6 +22,13 @@
       "when": 1737059048020,
       "tag": "0002_mighty_alex_power",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1737096189809,
+      "tag": "0003_majestic_purple_man",
+      "breakpoints": true
     }
   ]
 }

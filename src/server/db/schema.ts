@@ -66,6 +66,10 @@ export const skills = createTable("skill", {
   tools:  varchar("tools").notNull(),
 });
 
+export const interests = createTable("interest", {
+  id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+  name: varchar("name", { length: 255 }).notNull(),
+});
 
 export const accounts = createTable(
   "account",

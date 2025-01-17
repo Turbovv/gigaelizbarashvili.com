@@ -1,3 +1,4 @@
+import { interestsRouter } from "./routers/interest";
 import { skillsRouter } from "./routers/skill";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 
@@ -8,6 +9,7 @@ import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
  */
 export const appRouter = createTRPCRouter({
   skills: skillsRouter,
+  interests: interestsRouter,
 });
 
 // export type definition of API
