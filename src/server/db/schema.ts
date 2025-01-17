@@ -57,6 +57,16 @@ export const usersRelations = relations(users, ({ many }) => ({
   accounts: many(accounts),
 }));
 
+
+export const skills = createTable("skill", {
+  id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+  languages:  varchar("languages").notNull(),
+  frameworks:  varchar("frameworks").notNull(),
+  databases:  varchar("databases").notNull(),
+  tools:  varchar("tools").notNull(),
+});
+
+
 export const accounts = createTable(
   "account",
   {

@@ -1,0 +1,1 @@
+ALTER TABLE "portfolio_skills" RENAME TO "portfolio_skill";

@@ -93,7 +93,7 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
           <Header onFullscreenToggle={toggleFullscreen} onClose={resetTerminal} />
         </div>
 
-        <div className="px-6 py-8 text-center h-[90%] overflow-y-auto">
+        <div className="h-[90%]">
           {children}
         </div>
 
