@@ -1,5 +1,6 @@
 "use client";
 import { api } from "../../trpc/react";
+import Lines from "./lines";
 
 export default function About() {
   const { data: skillsData, isLoading, error } = api.skills.getSkills.useQuery();
@@ -32,57 +33,89 @@ export default function About() {
       }
     : { languages: [], frameworks: [], databases: [], tools: [] };
 
+  const codeContent = `// Top Skills
+const skills = {
+  languages: [${uniqueSkills.languages.map((lang) => `'${lang}'`).join(", ")}],
+  frameworks: [
+    ${uniqueSkills.frameworks.map((framework) => `'${framework}'`).join(",\n    ")}
+  ],
+  databases: [${uniqueSkills.databases.map((db) => `'${db}'`).join(", ")}],
+  tools: [
+    ${uniqueSkills.tools.map((tool) => `'${tool}'`).join(",\n    ")}
+  ]
+}`;
+
   return (
     <div
       style={{
+        display: "flex",
         fontFamily: "'Fira Code', monospace",
         color: "#d4d4d4",
         padding: "20px",
         borderRadius: "8px",
-        margin: "20px auto",
+        alignItems: "flex-start",
       }}
     >
-      <div>
-      <span style={{color: "rgba(118, 124, 157, 0.69)" }} className="font-style: italic;">// Top Skills</span>
-        <p style={{ color: "rgb(145, 180, 213)" }}>const <span className="text-white">skills</span> = &#123;</p>
-        <div style={{ paddingLeft: "20px" }}>
-          <p>
-            <span style={{ color: "rgb(173, 215, 255)" }}>languages</span>: [
-            <span style={{ color: "rgb(93, 228, 199)" }}>
-              {uniqueSkills.languages.map((lang, idx) => `'${lang}'${idx < uniqueSkills.languages.length - 1 ? ", " : ""}`)}
-            </span>
-            ],
-          </p>
-          <p>
-            <span style={{ color: "rgb(173, 215, 255)" }}>frameworks</span>: [
+      <Lines content={codeContent} />
+
+      <div style={{ whiteSpace: "pre-wrap", wordBreak: "break-word", margin: 0 }}>
+        <div>
+          <span style={{ color: "rgba(118, 124, 157, 0.69)", fontStyle: "italic" }}>
+            // Top Skills
+          </span>
+          <p style={{ color: "rgb(145, 180, 213)" }}>
+            const <span className="text-white">skills</span> = &#123;
           </p>
           <div style={{ paddingLeft: "20px" }}>
-            {uniqueSkills.frameworks.map((framework, idx) => (
-              <p key={idx}>
-                <span style={{ color: "rgb(93, 228, 199)" }}>
-                  '{framework}'
-                  {idx < uniqueSkills.frameworks.length - 1 ? "," : ""}
-                </span>
-              </p>
-            ))}
+            <p>
+              <span style={{ color: "rgb(173, 215, 255)" }}>languages</span>: [
+              <span style={{ color: "rgb(93, 228, 199)" }}>
+                {uniqueSkills.languages.map(
+                  (lang, idx) =>
+                    `'${lang}'${idx < uniqueSkills.languages.length - 1 ? ", " : ""}`
+                )}
+              </span>
+              ],
+            </p>
+            <p>
+              <span style={{ color: "rgb(173, 215, 255)" }}>frameworks</span>: [
+            </p>
+            <div style={{ paddingLeft: "20px" }}>
+              {uniqueSkills.frameworks.map((framework, idx) => (
+                <p key={idx}>
+                  <span style={{ color: "rgb(93, 228, 199)" }}>
+                    '{framework}'{idx < uniqueSkills.frameworks.length - 1 ? "," : ""}
+                  </span>
+                </p>
+              ))}
+            </div>
+            <p>],</p>
+            <p>
+              <span style={{ color: "rgb(173, 215, 255)" }}>databases</span>: [
+              <span style={{ color: "rgb(93, 228, 199)" }}>
+                {uniqueSkills.databases.map(
+                  (db, idx) =>
+                    `'${db}'${idx < uniqueSkills.databases.length - 1 ? ", " : ""}`
+                )}
+              </span>
+              ],
+            </p>
+            <p>
+              <span style={{ color: "rgb(173, 215, 255)" }}>tools</span>: [
+            </p>
+            <div style={{ paddingLeft: "20px" }}>
+              {uniqueSkills.tools.map((tool, idx) => (
+                <p key={idx}>
+                  <span style={{ color: "rgb(93, 228, 199)" }}>
+                    '{tool}'{idx < uniqueSkills.tools.length - 1 ? "," : ""}
+                  </span>
+                </p>
+              ))}
+            </div>
+            <p>]</p>
           </div>
-          <p>],</p>
-          <p>
-            <span style={{ color: "rgb(173, 215, 255)" }}>databases</span>: [
-            <span style={{ color: "rgb(93, 228, 199)" }}>
-              {uniqueSkills.databases.map((db, idx) => `'${db}'${idx < uniqueSkills.databases.length - 1 ? ", " : ""}`)}
-            </span>
-            ],
-          </p>
-          <p>
-            <span style={{ color: "rgb(173, 215, 255)" }}>tools</span>: [
-            <span style={{ color: "rgb(93, 228, 199)" }}>
-              {uniqueSkills.tools.map((tool, idx) => `'${tool}'${idx < uniqueSkills.tools.length - 1 ? ", " : ""}`)}
-            </span>
-            ]
-          </p>
+          <p style={{ color: "#9cdcfe" }}>&#125;</p>
         </div>
-        <p style={{ color: "#9cdcfe" }}>&#125;</p>
       </div>
     </div>
   );
