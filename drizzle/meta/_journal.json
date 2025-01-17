@@ -43,6 +43,20 @@
       "when": 1737121311824,
       "tag": "0005_powerful_wolfpack",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1737124340718,
+      "tag": "0006_free_lily_hollister",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1737124361769,
+      "tag": "0007_last_colossus",
+      "breakpoints": true
     }
   ]
 }

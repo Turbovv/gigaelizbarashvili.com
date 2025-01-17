@@ -3,6 +3,7 @@ import { skillsRouter } from "./routers/skill";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 import { softwaresRouter } from "./routers/software";
 import { hostingsRouter } from "./routers/hosting";
+import { hobbiesRouter } from "./routers/hobbies";
 
 /**
  * This is the primary router for your server.
@@ -13,7 +14,8 @@ export const appRouter = createTRPCRouter({
   skills: skillsRouter,
   interests: interestsRouter,
   softwares: softwaresRouter,
-  hostings: hostingsRouter
+  hostings: hostingsRouter,
+  hobbies: hobbiesRouter
 });
 
 // export type definition of API

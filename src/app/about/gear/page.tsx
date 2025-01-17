@@ -57,7 +57,7 @@ ${codeLinesHostings}];`.trim();
           {softwaresData?.map((interest, idx) => (
             <p key={idx}>
               <span>
-                [ 
+              &#123;
                   <br />
                   <span style={{ color: "rgb(173, 215, 255)" }}>name:</span>
                   <span style={{ color: "rgb(93, 228, 199)" }}>
@@ -77,7 +77,7 @@ ${codeLinesHostings}];`.trim();
                     '{interest.tags}',
                   </span>
                   <br />
-                ]
+                  &#125;,
               </span>
             </p>
           ))}
@@ -89,7 +89,7 @@ ${codeLinesHostings}];`.trim();
           {hostingsData?.map((hosting, idx) => (
             <p key={idx}>
               <span>
-                [ 
+              &#123;
                   <br />
                   <span style={{ color: "rgb(173, 215, 255)" }}>name:</span>
                   <span style={{ color: "rgb(93, 228, 199)" }}>
@@ -109,7 +109,7 @@ ${codeLinesHostings}];`.trim();
                     '{hosting.tags}',
                   </span>
                   <br />
-                ]
+                  &#125;,
               </span>
             </p>
           ))}

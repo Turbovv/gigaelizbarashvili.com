@@ -85,6 +85,11 @@ export const hostings = createTable("hosting", {
   tags: varchar("tags", { length: 255 }).notNull(),
 });
 
+export const hobbies = createTable("hobby", {
+  id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+  name: varchar("name", { length: 255 }).notNull(),
+});
+
 export const accounts = createTable(
   "account",
   {
