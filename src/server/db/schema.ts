@@ -90,6 +90,21 @@ export const hobbies = createTable("hobby", {
   name: varchar("name", { length: 255 }).notNull(),
 });
 
+export const projects = createTable(
+  "project",
+  {
+    id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+    name: varchar("name", { length: 255 }).notNull(),
+    url: varchar("url", { length: 500 }).notNull(),
+    desc: varchar("desc", { length: 500 }).notNull(),
+    websitelink: varchar("websitelink", { length: 255 }).notNull(),
+    githublink: varchar("githublink", { length: 255 }).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+  }
+);
+
 export const accounts = createTable(
   "account",
   {

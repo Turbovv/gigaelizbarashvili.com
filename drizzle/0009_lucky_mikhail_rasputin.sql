@@ -1,0 +1,1 @@
+ALTER TABLE "portfolio_project" ALTER COLUMN "desc" SET DATA TYPE varchar(500);
