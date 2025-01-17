@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         }`;
 
     const links = [
-        { label: "gear.ts", path: "/" },
+        { label: "gear.ts", path: "/about/gear" },
         { label: "personal.ts", path: "/" },
         { label: "work.ts", path: "/about/work" },
     ];

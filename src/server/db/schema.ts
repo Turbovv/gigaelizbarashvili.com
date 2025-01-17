@@ -71,6 +71,13 @@ export const interests = createTable("interest", {
   name: varchar("name", { length: 255 }).notNull(),
 });
 
+export const softwares = createTable("software", {
+  id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+  name: varchar("name", { length: 255 }).notNull(),
+  desc: varchar("desc", { length: 255 }).notNull(),
+  tags: varchar("tags", { length: 255 }).notNull(),
+});
+
 export const accounts = createTable(
   "account",
   {
