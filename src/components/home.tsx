@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React, { useState, useEffect, ReactNode, useRef } from "react";
 import Header from "./header";
+import Footer from "./footer";
 
 interface TerminalProps {
   children: ReactNode;
@@ -97,16 +98,7 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
           {children}
         </div>
 
-        <div className="px-4 py-2 bg-gray-800 rounded-b-lg flex gap-1 items-center">
-          <span className="text-sm text-gray-500">~/main</span>
-          <div className="flex gap-4 text-sm">
-            <span className="cursor-pointer">tmux</span>
-            <Link href="/">home</Link>
-            <Link href="/about">About</Link>
-            <span className="cursor-pointer">guest-book</span>
-            <span className="cursor-pointer">articles</span>
-          </div>
-        </div>
+        <Footer />
       </div>
     </div>
   );
