@@ -71,6 +71,13 @@
       "when": 1737137987310,
       "tag": "0009_lucky_mikhail_rasputin",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1737218864489,
+      "tag": "0010_previous_human_cannonball",
+      "breakpoints": true
     }
   ]
 }

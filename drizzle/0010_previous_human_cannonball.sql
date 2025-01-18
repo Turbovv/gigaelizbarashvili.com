@@ -1,0 +1,1 @@
+ALTER TABLE "portfolio_user" ALTER COLUMN "email" DROP NOT NULL;
