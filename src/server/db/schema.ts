@@ -39,6 +39,18 @@ export const posts = createTable(
   })
 );
 
+export const comments = createTable("comment", {
+  id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+  content: text("content").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  createdById: varchar("created_by", { length: 255 })
+    .notNull()
+    .references(() => users.id),
+});
+
+
 export const users = createTable("user", {
   id: varchar("id", { length: 255 })
     .notNull()
