@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "~/server/api/trpc";
 import { comments } from "~/server/db/schema";
 
 export const commentsRouter = createTRPCRouter({
@@ -13,11 +13,12 @@ export const commentsRouter = createTRPCRouter({
       const comment = await ctx.db.insert(comments).values({
         content: input.content,
         createdById: ctx.session.user.id,
+        createdByName: ctx.session.user.name,
       });
 
       return comment;
     }),
-    getAllComments: protectedProcedure.query(async ({ ctx }) => {
+    getAllComments: publicProcedure.query(async ({ ctx }) => {
         const allComments = await ctx.db.select().from(comments).orderBy(comments.createdAt);
         return allComments;
       }),

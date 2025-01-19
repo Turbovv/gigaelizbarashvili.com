@@ -45,10 +45,11 @@ export const comments = createTable("comment", {
   createdAt: timestamp("created_at", { withTimezone: true })
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
-  createdById: varchar("created_by", { length: 255 })
-    .notNull()
-    .references(() => users.id),
+  createdById: varchar("created_by", { length: 255 }).references(() => users.id),
+  createdByName: varchar("created_by_name", { length: 255 }),
 });
+
+
 
 
 export const users = createTable("user", {
@@ -56,7 +57,7 @@ export const users = createTable("user", {
     .notNull()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  name: varchar("name", { length: 255 }),
+  name: text("name").notNull().unique(),
   email: varchar("email", { length: 255 }),
   emailVerified: timestamp("email_verified", {
     mode: "date",
