@@ -49,7 +49,14 @@ export const comments = createTable("comment", {
   createdByName: varchar("created_by_name", { length: 255 }),
 });
 
-
+export const likes = createTable("like", {
+  id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+  commentId: integer("comment_id").notNull().references(() => comments.id),
+  userId: varchar("user_id", { length: 255 }).notNull().references(() => users.id),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+});
 
 
 export const users = createTable("user", {

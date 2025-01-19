@@ -2,7 +2,8 @@
 import SignIn from "~/components/sign-in";
 import { useState } from "react";
 import { api } from "~/trpc/react";
-import { formatDate } from '~/lib//format';
+import { formatDate } from '~/lib/format';
+import LikeButton from "~/components/like"; 
 
 export default function GuestBook() {
   const [content, setContent] = useState("");
@@ -76,8 +77,12 @@ export default function GuestBook() {
           [...comments].reverse().map((comment) => (
             <div className="flex gap-2 items-start justify-between" key={comment.id}>
               <p className="lowercase">{comment.createdByName}</p>:
-              <p className="w-full max-w-5xl break-words">{comment.content}</p>
+              <p className="w-full max-w-4xl break-words">{comment.content}</p>
+              <div className="flex items-center gap-2">
+              <LikeButton commentId={comment.id} />
               <p>{formatDate(comment.createdAt)}</p>
+              </div>
+
             </div>
           ))
         ) : (

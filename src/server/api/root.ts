@@ -6,6 +6,7 @@ import { hostingsRouter } from "./routers/hosting";
 import { hobbiesRouter } from "./routers/hobbies";
 import { projectsRouter } from "./routers/project";
 import { commentsRouter } from "./routers/comment";
+import { likesRouter } from "./routers/like";
 
 /**
  * This is the primary router for your server.
@@ -20,6 +21,7 @@ export const appRouter = createTRPCRouter({
   hobbies: hobbiesRouter,
   projects: projectsRouter,
   comments: commentsRouter,
+  likes: likesRouter
 });
 
 // export type definition of API
