@@ -43,9 +43,14 @@ export default function GuestBook() {
     }
   };
 
-  const handleDelete = (commentId: number) => {
-    deleteCommentMutation.mutate({ commentId });
+  const handleDelete = async (commentId: number) => {
+    try {
+      await deleteCommentMutation.mutateAsync({ commentId });
+    } catch (error) {
+      console.error("Error deleting comment or like:", error);
+    }
   };
+  
 
   if (isLoading) return <div>Loading comments...</div>;
   if (isError) return <div>Error loading comments</div>;
