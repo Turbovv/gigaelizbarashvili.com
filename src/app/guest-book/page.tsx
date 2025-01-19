@@ -4,6 +4,7 @@ import { useState } from "react";
 import { api } from "~/trpc/react";
 import { formatDate } from '~/lib/format';
 import LikeButton from "~/components/like"; 
+import { X } from "lucide-react";
 
 export default function GuestBook() {
   const [content, setContent] = useState("");
@@ -16,6 +17,12 @@ export default function GuestBook() {
     },
     onError: () => {
       setLoading(false);
+    },
+  });
+
+  const deleteCommentMutation = api.comments.deleteComment.useMutation({
+    onSuccess: () => {
+      commentsQuery.refetch();
     },
   });
 
@@ -34,6 +41,10 @@ export default function GuestBook() {
     } catch (error) {
       console.error("Error creating comment:", error);
     }
+  };
+
+  const handleDelete = (commentId: number) => {
+    deleteCommentMutation.mutate({ commentId });
   };
 
   if (isLoading) return <div>Loading comments...</div>;
@@ -55,7 +66,7 @@ export default function GuestBook() {
               onChange={(e) => setContent(e.target.value)}
               placeholder="Leave a message"
               required
-              className="bg-gray-900  max-w-2xl resize-none h-6 focus:outline-none focus:border-transparent"
+              className="bg-gray-900  w-full resize-none h-6 focus:outline-none focus:border-transparent"
             />
             <button
               className="px-14 bg-gray-400 text-gray-800 flex items-center justify-center"
@@ -79,10 +90,15 @@ export default function GuestBook() {
               <p className="lowercase">{comment.createdByName}</p>:
               <p className="w-full max-w-4xl break-words">{comment.content}</p>
               <div className="flex items-center gap-2">
-              <LikeButton commentId={comment.id} />
-              <p>{formatDate(comment.createdAt)}</p>
+                <LikeButton commentId={comment.id} />
+                <button
+                  onClick={() => handleDelete(comment.id)}
+                  className="text-gray-400"
+                >
+                  <X className="w-[14px]" />
+                </button>
+                <p>{formatDate(comment.createdAt)}</p>
               </div>
-
             </div>
           ))
         ) : (
