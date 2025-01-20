@@ -2,9 +2,11 @@
 import { api } from "~/trpc/react";
 import { useState, useEffect } from "react";
 import { Heart } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 export default function LikeButton({ commentId }: { commentId: number }) {
   const [liked, setLiked] = useState(false);
+  const { data: session } = useSession();
   const { data, refetch } = api.likes.getLikes.useQuery({ postId: commentId });
 
   useEffect(() => {
@@ -22,12 +24,18 @@ export default function LikeButton({ commentId }: { commentId: number }) {
     await toggleLike.mutateAsync({ postId: commentId });
   };
 
+  if (!session) {
+    return null;
+  }
+
   return (
     <div className="flex items-center gap-1">
       <span>{data?.likes || 0}</span>
       <button onClick={handleLike}>
         <Heart
-          className={`w-4 h-4 transition-colors ${liked ? "fill-red-500 text-red-500" : "fill-none text-gray-500"}`}
+          className={`w-4 h-4 transition-colors ${
+            liked ? "fill-red-500 text-red-500" : "fill-none text-gray-500"
+          }`}
         />
       </button>
     </div>

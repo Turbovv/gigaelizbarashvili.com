@@ -1,6 +1,6 @@
 import { sql } from "drizzle-orm";
 import { z } from "zod";
-import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "~/server/api/trpc";
 import { likes } from "~/server/db/schema";
 
 export const likesRouter = createTRPCRouter({
@@ -29,7 +29,7 @@ export const likesRouter = createTRPCRouter({
   }),
 
 
-    getLikes: protectedProcedure
+    getLikes: publicProcedure
     .input(z.object({ postId: z.number() }))
     .query(async ({ ctx, input }) => {
       const likeCountResult = await ctx.db

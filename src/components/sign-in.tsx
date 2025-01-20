@@ -1,6 +1,7 @@
 "use client"
 import { signIn, useSession } from "next-auth/react";
 import SignOut from "./sign-out";
+import { Github } from "lucide-react";
 
 export default function SignIn() {
   const { data: session } = useSession();
@@ -13,11 +14,14 @@ export default function SignIn() {
         </>
       ) : (
         <button
-          onClick={() =>
-            signIn("github")
-          }
+        onClick={() =>
+          signIn("github")
+        }
+        className="flex items-center gap-2"
+        style={{  fontFamily: "'Fira Code', monospace",}}
         >
-          Sign in with GitHub
+        <Github className="w-4 fill-gray-400"  />
+        SignIn
         </button>
       )}
     </div>
