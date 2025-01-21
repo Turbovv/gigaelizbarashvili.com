@@ -80,7 +80,7 @@ export default function GuestBook() {
               placeholder={session ? "Leave a message" : "Sign in to leave a message"}
               required
               disabled={!session}
-              className="bg-gray-900  w-full resize-none h-7 focus:outline-none focus:border-transparent"
+              className="bg-inherit  w-full resize-none h-7 focus:outline-none focus:border-transparent"
             />
             <button
               className="px-11 bg-gray-400 text-gray-800 flex items-center justify-center"

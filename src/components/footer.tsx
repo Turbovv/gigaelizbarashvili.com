@@ -23,7 +23,6 @@ export default function Footer() {
         { label: "abouts", path: "/about/work" },
         { label: "projects", path: "/projects" },
         { label: "guest-book", path: "/guest-book" },
-        { label: "articles", path: "/articles" },
     ];
 
     return (

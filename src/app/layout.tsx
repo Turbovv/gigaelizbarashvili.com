@@ -4,8 +4,9 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
-import { SessionProvider } from "next-auth/react"; // Add this import
+import { SessionProvider } from "next-auth/react";
 import Home from "~/components/home";
+import AnimatedCircles from "~/components/animated-circles";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -18,7 +19,16 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
+      <body
+        style={{
+          backgroundImage:
+            "linear-gradient(90deg, #444 2px, transparent 0), linear-gradient(180deg, #444 2px, transparent 0)",
+          backgroundSize: "5vh 5vh",
+          backgroundColor: "rgb(61, 61, 61)",
+        }}
+        className="min-h-screen"
+      >
+        <AnimatedCircles />
         <SessionProvider>
           <TRPCReactProvider>
             <Home>{children}</Home>

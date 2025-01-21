@@ -89,8 +89,8 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
         transition: "all 0.2s ease",
       }}
     >
-      <div className="relative bg-gray-900 text-gray-300 rounded-lg shadow-lg border border-gray-700 h-full">
-        <div className="flex items-center px-4 py-2 bg-gray-800 rounded-t-lg border-b border-gray-700">
+      <div className="relative bg-gradient-to-tr from-black to-neutral-800 text-gray-300 rounded-lg shadow-lg border border-gray-700 h-full">
+        <div className="flex items-center px-4 py-2  rounded-t-lg">
           <Header onFullscreenToggle={toggleFullscreen} onClose={resetTerminal} />
         </div>
 

@@ -9,7 +9,7 @@ export default function HomePage() {
 ███████╗██║╚██████╔╝██║  ██║███████║███████║██████╔╝███████╗███████╗
 ╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚═════╝ ╚══════╝╚══════╝`}
           </pre>
-          <p className="mt-4 text-sm">
+          <p className="mt-4 text-sm font-mono">
             Self taught web developer <br />
             love to learn new things and I'm always looking for new challenges to solve :)
           </p>
