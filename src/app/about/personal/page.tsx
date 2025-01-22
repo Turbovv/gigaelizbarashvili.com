@@ -32,6 +32,7 @@ ${formattedHobbies}
         fontFamily: "'Fira Code', monospace",
         padding: "20px",
         color: "#d4d4d4",
+        paddingLeft: "30px",
       }}
     >
       <Lines content={content} />

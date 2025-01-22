@@ -45,7 +45,6 @@ ${codeLinesHostings}];`.trim();
         color: "#d4d4d4",
         maxHeight: "600px",
         overflowY: "auto",
-        border: "1px solid #444",
       }}
     >
       <Lines content={content} />

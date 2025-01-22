@@ -13,7 +13,7 @@ export default function Footer() {
     };
 
     const linkClass = (path: string) =>
-        `text-sm font-mono px-2  transition-all duration-200 ${activeItem === path
+        `text-lg leading-none font-mono px-2 transition-all duration-200 ${activeItem === path
             ? "bg-gray-400 text-black"
             : "text-gray-500 hover:text-gray-300"
         }`;
@@ -31,7 +31,7 @@ export default function Footer() {
                 <span className="text-sm font-mono text-gray-500">~/main</span>
 
                 <div className="flex gap-2">
-                    <span className="text-sm font-mono px-2 rounded-sm bg-gray-400 text-black">
+                    <span className="text-lg font-mono px-2 rounded-sm leading-none bg-gray-400 text-black">
                         tmux
                     </span>
                     {links.map((link) => (
