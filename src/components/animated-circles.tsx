@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect } from "react";
 import "~/styles/background-animations.css";
 
@@ -6,18 +6,20 @@ export default function AnimatedCircles() {
   useEffect(() => {
     const circles = document.querySelectorAll(".animated-circle");
     circles.forEach(circle => {
+      const element = circle as HTMLElement;
       const moveX = Math.random() * 200 - 100 + "vw";
       const moveY = Math.random() * 200 - 100 + "vh";
-      circle.style.setProperty("--move-x", moveX);
-      circle.style.setProperty("--move-y", moveY);
+      element.style.setProperty("--move-x", moveX);
+      element.style.setProperty("--move-y", moveY);
     });
 
-    const randomIndices = new Set();
+    const randomIndices = new Set<number>();
     while (randomIndices.size < 100) {
       randomIndices.add(Math.floor(Math.random() * circles.length));
     }
     randomIndices.forEach(index => {
-      circles[index].classList.add("fade");
+      const element = circles[index] as HTMLElement;
+      element.classList.add("fade");
     });
   }, []);
 
