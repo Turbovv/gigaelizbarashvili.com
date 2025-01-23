@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import React, { useState, useEffect, ReactNode, useRef } from "react";
 import Header from "./header";
 import Footer from "./footer";
@@ -16,16 +15,27 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
   const [size, setSize] = useState({ width: 1400, height: 700 });
 
   const defaultSize = { width: 1400, height: 700 };
-  const defaultPosition = { x: 0, y: 0 };
 
   useEffect(() => {
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
+    const updateSizeAndPosition = () => {
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
 
-    setPosition({
-      x: (windowWidth - defaultSize.width) / 2,
-      y: (windowHeight - defaultSize.height) / 2,
-    });
+      const newWidth = Math.min(defaultSize.width, windowWidth - 20);
+      const newHeight = Math.min(defaultSize.height, windowHeight - 20);
+
+      setSize({ width: newWidth, height: newHeight });
+      setPosition({
+        x: (windowWidth - newWidth) / 2,
+        y: (windowHeight - newHeight) / 2,
+      });
+    };
+
+    updateSizeAndPosition();
+
+    const handleResize = () => {
+      updateSizeAndPosition();
+    };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -37,10 +47,12 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
       setIsFullscreen(!!document.fullscreenElement);
     };
 
+    window.addEventListener("resize", handleResize);
     window.addEventListener("keydown", handleKeyDown);
     document.addEventListener("fullscreenchange", handleFullscreenChange);
 
     return () => {
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
@@ -70,17 +82,23 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
     if (isFullscreen) {
       await exitFullscreen();
     }
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+
+    const newWidth = Math.min(defaultSize.width, windowWidth - 20);
+    const newHeight = Math.min(defaultSize.height, windowHeight - 20);
+
+    setSize({ width: newWidth, height: newHeight });
     setPosition({
-      x: (window.innerWidth - defaultSize.width) / 2,
-      y: (window.innerHeight - defaultSize.height) / 2,
+      x: (windowWidth - newWidth) / 2,
+      y: (windowHeight - newHeight) / 2,
     });
-    setSize(defaultSize);
   };
 
   return (
     <div
       ref={terminalRef}
-      className="absolute z-10"
+      className="fixed z-10 flex justify-center items-center w-full h-full"
       style={{
         left: position.x,
         top: position.y,
@@ -89,12 +107,12 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
         transition: "all 0.2s ease",
       }}
     >
-      <div className="relative bg-gradient-to-tr from-black to-neutral-800 text-gray-300 rounded-lg shadow-lg border border-gray-700 h-full">
-        <div className="flex items-center px-4 py-2  rounded-t-lg">
+      <div className="relative bg-gradient-to-tr from-black to-neutral-800 text-gray-300 rounded-lg shadow-lg border border-gray-700 h-full w-full max-w-full max-h-full">
+        <div className="flex items-center px-4 py-2 rounded-t-lg">
           <Header onFullscreenToggle={toggleFullscreen} onClose={resetTerminal} />
         </div>
 
-        <div className="h-[90%]">
+        <div className="h-[90%] overflow-auto">
           {children}
         </div>
 
