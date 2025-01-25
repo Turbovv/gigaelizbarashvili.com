@@ -30,11 +30,11 @@ export default function LikeButton({ commentId }: { commentId: number }) {
 
   return (
     <div className="flex items-center gap-1">
-      <span>{data?.likes || 0}</span>
+      <span className="text-[#898989]">{data?.likes || 0}</span>
       <button onClick={handleLike}>
         <Heart
           className={`w-4 h-4 transition-colors ${
-            liked ? "fill-red-500 text-red-500" : "fill-none text-gray-500"
+            liked ? "fill-[#898989] text-[#898989]" : "fill-none text-gray-500"
           }`}
         />
       </button>

@@ -11,7 +11,7 @@ export default function GuestBook() {
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
   const {data: session} = useSession()
-  
+
 
   const createCommentMutation = api.comments.createComment.useMutation({
     onSuccess: () => {
@@ -59,68 +59,73 @@ export default function GuestBook() {
   if (isError) return <div>Error loading comments</div>;
 
   return (
-    <div className="px-4 py-1 custom-scroll"
-      style={{
-        maxHeight: "600px",
-        overflowY: "auto",
-      }}
-    >
-      <div className="flex justify-between items-center mb-2">
+    <>
+      <form className='mb-2 flex flex-col gap-2 text-sm lg:px-6 lg:flex-row lg:items-center max-lg:p-2' onSubmit={handleSubmit}>
+        <p className='truncate lg:w-36 text-[#898989] '>
+          <span className='text-[#5de4c7]'>~</span>/{session ? session?.user?.name?.toLowerCase().replace(/\s/g, '-') : 'guest'}
+        </p>
+        <p className='hidden lg:block text-[#898989]'>:</p>
+        <input
+          name='desc'
+          id='desc'
+          type='text'
+          className='flex-1 bg-transparent placeholder-opacity-50 caret-[#5de4c7] placeholder:text-[#898989]/90 focus:border-transparent focus:outline-none focus:ring-0'
+          placeholder={session ? 'Leave a message' : 'Sign in to leave a message'}
+          autoFocus
+          required
+          minLength={3}
+          maxLength={140}
+          autoComplete='off'
+          disabled={!session}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
         {session ? (
-          <p className="lowercase">{session?.user?.name}</p>
+          <button
+            className="px-11 bg-gray-400 text-gray-800 flex items-center justify-center"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? (
+              <div className="loader w-6 h-6 border-4 border-t-transparent border-gray-800 rounded-full animate-spin"></div>
+            ) : "Submit"}
+          </button>
         ) : (
-          <p className="w-40">guest </p>
-        )}:
-        {/* <SignIn />: */}
-        <form onSubmit={handleSubmit} className="w-full max-w-6xl">
-          <div className="flex items-center justify-between">
-            <textarea
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder={session ? "Leave a message" : "Sign in to leave a message"}
-              required
-              disabled={!session}
-              className="bg-inherit  w-full resize-none h-7 focus:outline-none focus:border-transparent"
-            />
-            <button
-              className="px-11 bg-gray-400 text-gray-800 flex items-center justify-center"
-              type="submit"
-              disabled={loading}
-            >
-              {loading ? (
-                <div className="loader w-6 h-6 border-4 border-t-transparent border-gray-800 rounded-full animate-spin"></div>
-              ) : session ? "Submit" : <SignIn />}
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <div>
+          <SignIn />
+        )}
+      </form>
+      <ul className='flex flex-col gap-y-2 divide-y divide-[#898989]/20 text-sm lg:divide-y-0 max-lg:p-2'>
         {comments && comments.length > 0 ? (
           [...comments].reverse().map((comment) => (
-            <div className="flex gap-2 items-start justify-between" key={comment.id}>
-              <p className="lowercase">{comment.createdByName}</p>:
-              <p className="w-full max-w-4xl break-words">{comment.content}</p>
-              <div className="flex items-center gap-2">
-                <LikeButton commentId={comment.id} />
-               {session ? (
-                 <button
-                 onClick={() => handleDelete(comment.id)}
-                 className="text-gray-400"
-               >
-                 <X className="w-[14px]" />
-               </button>
-               ): (
-                <p></p>
-               ) }
-                <p>{formatDate(comment.createdAt)}</p>
-              </div>
-            </div>
+            <li key={comment.id} className='flex flex-col gap-1 py-1 lg:flex-row lg:px-6 lg:gap-2 lg:border-y-0 lg:py-0 group'>
+              <p className='flex-1 truncate lg:w-36 lg:flex-none text-[#898989]'>
+                <span className='text-[#5de4c7]'>~</span>/{comment.createdByName.toLowerCase().replace(/\s/g, '-')}
+              </p>
+              <p className='block lg:hidden text-[#898989]'>{comment.content}</p>
+              <p className='hidden lg:block text-[#898989]'>:</p>
+              <p className='hidden flex-1 lg:block text-[#898989]'>{comment.content}</p>
+              {session && (
+                <div className='flex items-start mt-1 gap-x-1 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity'>
+                  <LikeButton commentId={comment.id} />
+                  {comment.createdById === session?.user.id && (
+                    <button
+                      onClick={() => handleDelete(comment.id)}
+                      className="text-gray-400"
+                    >
+                      <X className="w-[14px] text-[#898989]" />
+                    </button>
+                  )}
+                </div>
+              )}
+              <p className='hidden lg:block text-[#898989]'>
+                {formatDate(comment.createdAt)}
+              </p>
+            </li>
           ))
         ) : (
           <p>No comments yet</p>
         )}
-      </div>
-    </div>
+      </ul>
+    </>
   );
 }
