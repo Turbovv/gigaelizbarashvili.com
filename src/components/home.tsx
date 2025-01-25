@@ -21,14 +21,19 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
       const windowWidth = window.innerWidth;
       const windowHeight = window.innerHeight;
 
-      const newWidth = Math.min(defaultSize.width, windowWidth - 20);
-      const newHeight = Math.min(defaultSize.height, windowHeight - 20);
+      if (windowWidth <= 1024) {
+        setSize({ width: windowWidth, height: windowHeight });
+        setPosition({ x: 0, y: 0 });
+      } else {
+        const newWidth = Math.min(defaultSize.width, windowWidth - 20);
+        const newHeight = Math.min(defaultSize.height, windowHeight - 20);
 
-      setSize({ width: newWidth, height: newHeight });
-      setPosition({
-        x: (windowWidth - newWidth) / 2,
-        y: (windowHeight - newHeight) / 2,
-      });
+        setSize({ width: newWidth, height: newHeight });
+        setPosition({
+          x: (windowWidth - newWidth) / 2,
+          y: (windowHeight - newHeight) / 2,
+        });
+      }
     };
 
     updateSizeAndPosition();
@@ -98,7 +103,9 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
   return (
     <div
       ref={terminalRef}
-      className="fixed z-10 flex justify-center items-center w-full h-full"
+      className={`fixed z-10 flex justify-center items-center ${
+        size.width <= 1024 ? "w-full h-full" : ""
+      }`}
       style={{
         left: position.x,
         top: position.y,
@@ -107,8 +114,8 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
         transition: "all 0.2s ease",
       }}
     >
-      <div className="relative bg-gradient-to-tr from-black to-neutral-800 text-gray-300 rounded-lg shadow-lg border border-gray-700 h-full w-full max-w-full max-h-full">
-        <div className="flex items-center px-4 py-2 rounded-t-lg">
+      <div className="relative bg-gradient-to-tr from-black to-neutral-800 text-gray-300 lg:rounded-lg shadow-lg border border-gray-700 h-full w-full max-w-full max-h-full">
+        <div className="max-lg:hidden flex items-center px-4 py-2">
           <Header onFullscreenToggle={toggleFullscreen} onClose={resetTerminal} />
         </div>
 
@@ -123,3 +130,4 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
 };
 
 export default Terminal;
+

@@ -26,7 +26,7 @@ export default function RootLayout({
           backgroundSize: "5vh 5vh",
           backgroundColor: "rgb(61, 61, 61)",
         }}
-        className="min-h-screen"
+        className="min-h-screen max-lg:hidden "
       >
         <AnimatedCircles />
         <SessionProvider>
@@ -35,6 +35,11 @@ export default function RootLayout({
           </TRPCReactProvider>
         </SessionProvider>
       </body>
+      <TRPCReactProvider>
+      <div className="hidden max-lg:block">
+        <Home>{children}</Home>
+      </div>
+      </TRPCReactProvider>
     </html>
   );
 }
