@@ -26,13 +26,13 @@ export default function Footer() {
     ];
 
     return (
-        <div className="relative px-6  flex items-center gap-1">
-            <div className="grid absolute">
-                <span className="text-sm font-mono text-gray-500">~/main</span>
+        <div className="relative  px-2 max-lg:py-16 flex items-center gap-1">
+            <div className="grid absolute w-full">
+                <span className="text-sm font-mono text-gray-500 max-lg:hidden">~/main</span>
 
-                <div className="flex gap-2">
+                <div className="flex gap-2 overflow-x-auto sm:overflow-x-hidden whitespace-nowrap sm:whitespace-normal">
                     <span className="text-lg font-mono px-2 rounded-sm leading-none bg-gray-400 text-black">
-                        tmux
+                        cmd
                     </span>
                     {links.map((link) => (
                         <Link

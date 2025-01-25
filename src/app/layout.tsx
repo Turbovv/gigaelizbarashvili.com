@@ -35,11 +35,13 @@ export default function RootLayout({
           </TRPCReactProvider>
         </SessionProvider>
       </body>
+      <SessionProvider>
       <TRPCReactProvider>
       <div className="hidden max-lg:block">
         <Home>{children}</Home>
       </div>
       </TRPCReactProvider>
+      </SessionProvider>
     </html>
   );
 }
