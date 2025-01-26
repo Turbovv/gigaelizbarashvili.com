@@ -21,9 +21,8 @@ export default function Page() {
         }}
       >
         {projectsData?.map((project) => (
-          <Link href={`/projects/${project.id}`}>
+          <Link key={project.id} href={`/projects/${project.id}`}>
           <div
-          key={project.id}
           style={{
             backgroundColor: "#252525",
             borderRadius: "10px",
