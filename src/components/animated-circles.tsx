@@ -1,7 +1,26 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
+"use client"
+import React, { useState, useEffect, memo } from "react";
 import "~/styles/background-animations.css";
+
+type CircleProps = {
+  top: string;
+  left: string;
+  isSpecial: boolean;
+  moveX: string;
+  moveY: string;
+};
+
+const Circle = memo(({ top, left, isSpecial, moveX, moveY }: CircleProps) => (
+  <div
+    className={`animated-circle ${isSpecial ? "bg-white-circle" : ""}`}
+    style={{
+      top,
+      left,
+      "--move-x": moveX,
+      "--move-y": moveY,
+    } as React.CSSProperties}
+  />
+));
 
 export default function AnimatedCircles() {
   const TOTAL_CIRCLES = 500;
@@ -19,15 +38,15 @@ export default function AnimatedCircles() {
       specialIndices.add(randomIndex);
     }
 
-    setPositions(
-      Array.from({ length: TOTAL_CIRCLES }).map((_, index) => ({
-        top: `${Math.random() * 100}vh`,
-        left: `${Math.random() * 100}vw`,
-        moveX: `${(Math.random() - 0.5) * 200}vw`,
-        moveY: `${(Math.random() - 0.5) * 200}vh`,
-        isSpecial: specialIndices.has(index),
-      }))
-    );
+    const newPositions = Array.from({ length: TOTAL_CIRCLES }).map((_, index) => ({
+      top: `${Math.random() * 100}vh`,
+      left: `${Math.random() * 100}vw`,
+      moveX: `${(Math.random() - 0.5) * 100}vw`,
+      moveY: `${(Math.random() - 0.5) * 100}vh`,
+      isSpecial: specialIndices.has(index),
+    }));
+
+    setPositions(newPositions);
   }, []);
 
   if (positions.length === 0) return null;
@@ -35,15 +54,13 @@ export default function AnimatedCircles() {
   return (
     <div className="circle-container">
       {positions.map((pos, index) => (
-        <div
+        <Circle
           key={index}
-          className={`animated-circle ${pos.isSpecial ? "bg-white-circle" : ""}`}
-          style={{
-            top: pos.top,
-            left: pos.left,
-            "--move-x": pos.moveX,
-            "--move-y": pos.moveY,
-          } as React.CSSProperties}
+          top={pos.top}
+          left={pos.left}
+          isSpecial={pos.isSpecial}
+          moveX={pos.moveX}
+          moveY={pos.moveY}
         />
       ))}
     </div>

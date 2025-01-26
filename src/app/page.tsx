@@ -23,15 +23,6 @@ export default function HomePage() {
       </div>
 
       <div className="text-base">
-        I thrive on{" "}
-        <span className="font-semibold text-primary">creating</span>,{" "}
-        <span className="font-semibold text-primary">learning</span>, and{" "}
-        <span className="font-semibold text-primary">collaborating</span>. I
-        take pride in building user-friendly applications and clean,
-        maintainable code that makes a difference.
-      </div>
-
-      <div className="text-base">
         In my free time, I love{" "}
         <span className="font-semibold text-primary">playing video games</span>,{" "}
         <span className="font-semibold text-primary">walking outside</span>,{" "}
