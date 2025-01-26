@@ -96,7 +96,7 @@ ${uniqueInterests.map((interest) => `'${interest}'`).join(",\n  ")}
                     `'${lang}'${idx < uniqueSkills.languages.length - 1 ? ", " : ""}`
                 )}
               </span>
-              <span style={{color: "rgb(166, 172, 205)"}}>]</span>
+              <span style={{color: "rgb(166, 172, 205)"}}>],</span>
             </p>
             <p>
               <span style={{ color: "rgb(173, 215, 255)" }}>frameworks</span>: <span style={{color: "rgb(166, 172, 205)"}}>[</span>
@@ -112,17 +112,17 @@ ${uniqueInterests.map((interest) => `'${interest}'`).join(",\n  ")}
             </div>
             <p style={{color: "rgb(166, 172, 205)"}}>],</p>
             <p>
-              <span style={{ color: "rgb(173, 215, 255)" }}>databases</span>:  <span style={{color: "rgb(166, 172, 205)"}}>[,</span>
+              <span style={{ color: "rgb(173, 215, 255)" }}>databases</span>: <span style={{color: "rgb(166, 172, 205)"}}>[</span>
               <span style={{ color: "rgb(93, 228, 199)" }}>
                 {uniqueSkills.databases.map(
                   (db, idx) =>
                     `'${db}'${idx < uniqueSkills.databases.length - 1 ? ", " : ""}`
                 )}
               </span>
-              ],
+              <span style={{color: "rgb(166, 172, 205)"}}>],</span>
             </p>
             <p>
-              <span style={{ color: "rgb(173, 215, 255)" }}>tools</span>: <span style={{color: "rgb(166, 172, 205)"}}>[,</span>
+              <span style={{ color: "rgb(173, 215, 255)" }}>tools</span>: <span style={{color: "rgb(166, 172, 205)"}}>[</span>
               <span style={{ color: "rgb(93, 228, 199)" }}>
                 {uniqueSkills.tools.map((tool, idx) => `'${tool}'`).join(", ")}
               </span>
@@ -135,7 +135,7 @@ ${uniqueInterests.map((interest) => `'${interest}'`).join(",\n  ")}
           // Fun Facts
           </p>
           <p style={{ color: "rgb(145, 180, 213)" }}>
-            const <span style={{ color: "rgb(145, 180, 213)" }}>interests</span> =   <span style={{color: "rgb(166, 172, 205)"}}>[</span>
+            const <span style={{ color: "rgb(145, 180, 213)" }}>interests</span> = <span style={{color: "rgb(166, 172, 205)"}}>[</span>
           </p>
           <div style={{ paddingLeft: "20px" }}>
             {uniqueInterests.map((interest, idx) => (
