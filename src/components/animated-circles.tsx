@@ -1,38 +1,49 @@
 "use client";
-import { useEffect } from "react";
+
+import React, { useState, useEffect } from "react";
 import "~/styles/background-animations.css";
 
 export default function AnimatedCircles() {
-  useEffect(() => {
-    const circles = document.querySelectorAll(".animated-circle");
-    circles.forEach(circle => {
-      const element = circle as HTMLElement;
-      const moveX = Math.random() * 200 - 100 + "vw";
-      const moveY = Math.random() * 200 - 100 + "vh";
-      element.style.setProperty("--move-x", moveX);
-      element.style.setProperty("--move-y", moveY);
-    });
+  const TOTAL_CIRCLES = 500;
+  const SPECIAL_CIRCLES = 100;
 
-    const randomIndices = new Set<number>();
-    while (randomIndices.size < 100) {
-      randomIndices.add(Math.floor(Math.random() * circles.length));
+  const [positions, setPositions] = useState<
+    { top: string; left: string; isSpecial: boolean; moveX: string; moveY: string }[]
+  >([]);
+
+  useEffect(() => {
+    const specialIndices = new Set<number>();
+
+    while (specialIndices.size < SPECIAL_CIRCLES) {
+      const randomIndex = Math.floor(Math.random() * TOTAL_CIRCLES);
+      specialIndices.add(randomIndex);
     }
-    randomIndices.forEach(index => {
-      const element = circles[index] as HTMLElement;
-      element.classList.add("fade");
-    });
+
+    setPositions(
+      Array.from({ length: TOTAL_CIRCLES }).map((_, index) => ({
+        top: `${Math.random() * 100}vh`,
+        left: `${Math.random() * 100}vw`,
+        moveX: `${(Math.random() - 0.5) * 200}vw`,
+        moveY: `${(Math.random() - 0.5) * 200}vh`,
+        isSpecial: specialIndices.has(index),
+      }))
+    );
   }, []);
+
+  if (positions.length === 0) return null;
 
   return (
     <div className="circle-container">
-      {Array.from({ length: 500 }).map((_, index) => (
+      {positions.map((pos, index) => (
         <div
           key={index}
-          className="animated-circle"
+          className={`animated-circle ${pos.isSpecial ? "bg-white-circle" : ""}`}
           style={{
-            top: `${Math.random() * 100}vh`,
-            left: `${Math.random() * 100}vw`,
-          }}
+            top: pos.top,
+            left: pos.left,
+            "--move-x": pos.moveX,
+            "--move-y": pos.moveY,
+          } as React.CSSProperties}
         />
       ))}
     </div>

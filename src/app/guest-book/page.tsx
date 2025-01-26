@@ -82,7 +82,7 @@ export default function GuestBook() {
         />
         {session ? (
           <button
-            className="px-11 bg-gray-400 text-gray-800 flex items-center justify-center"
+            className="bg-gray-400 text-gray-800 flex items-center justify-center lg:w-40 p-1"
             type="submit"
             disabled={loading}
           >
@@ -97,16 +97,21 @@ export default function GuestBook() {
       <ul className='flex flex-col gap-y-2 divide-y divide-[#898989]/20 text-sm lg:divide-y-0 max-lg:p-2'>
         {comments && comments.length > 0 ? (
           [...comments].reverse().map((comment) => (
-            <li key={comment.id} className='flex flex-col gap-1 py-1 lg:flex-row lg:px-6 lg:gap-2 lg:border-y-0 lg:py-0 group'>
-              <p className='flex-1 truncate lg:w-36 lg:flex-none text-[#898989]'>
-                <span className='text-[#5de4c7]'>~</span>/{comment.createdByName.toLowerCase().replace(/\s/g, '-')}
-              </p>
+            <li key={comment.id} className='flex flex-col lg:items-center gap-1 py-1 lg:flex-row lg:px-6 lg:gap-2 lg:border-y-0 lg:py-0 group'>
+              {comment && comment.createdByName && (
+                <p className='flex-1 truncate lg:w-36 lg:flex-none text-[#898989]'>
+                  <span className='text-[#5de4c7]'>~</span>/{comment.createdByName.toLowerCase().replace(/\s/g, '-')}
+                </p>
+              )}
               <p className='block lg:hidden text-[#898989]'>{comment.content}</p>
               <p className='hidden lg:block text-[#898989]'>:</p>
               <p className='hidden flex-1 lg:block text-[#898989]'>{comment.content}</p>
               {session && (
-                <div className='flex items-start mt-1 gap-x-1 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity'>
+                <div className='flex items-center'>
+                  <div className="gap-x-1 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
+                    
                   <LikeButton commentId={comment.id} />
+                  </div>
                   {comment.createdById === session?.user.id && (
                     <button
                       onClick={() => handleDelete(comment.id)}
@@ -117,8 +122,8 @@ export default function GuestBook() {
                   )}
                 </div>
               )}
-              <p className='hidden lg:block text-[#898989]'>
-                {formatDate(comment.createdAt)}
+              <p className='hidden lg:block text-[#898989] text-base '>
+                {formatDate(comment.createdAt).replace(/\//g, '-').replace(',', '')}
               </p>
             </li>
           ))

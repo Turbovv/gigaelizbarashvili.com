@@ -49,3 +49,8 @@
     top: 0;
     left: 0;
   }
+  .bg-white-circle {
+    background-color: white !important;
+    animation: move 120s linear infinite, fade 5s ease-in-out infinite;
+  }
+  
