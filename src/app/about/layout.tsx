@@ -26,7 +26,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 
     return (
         <div className="relative   items-center gap-1">
-            <div className="flex ml-7 gap-2 bg-neutral-800">
+            <div className="flex fixed   max-lg:ml-2 lg:ml-7 gap-2 bg-neutral-800">
                 {links.map((link) => (
                     <Link
                         key={link.path}
@@ -38,7 +38,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </Link>
                 ))}
             </div>
-            {children}
+            <div className="pt-5">{children}</div>
         </div>
     );
 }

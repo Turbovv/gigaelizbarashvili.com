@@ -37,13 +37,11 @@ ${codeLinesHostings}];`.trim();
 
   return (
     <div
-      className="custom-scroll"
+      className="custom-scroll p-2 lg:p-5  max-lg:w-[900px]"
       style={{
         display: "flex",
         fontFamily: "'Fira Code', monospace",
-        padding: "20px",
         color: "#d4d4d4",
-        maxHeight: "600px",
         overflowY: "auto",
       }}
     >

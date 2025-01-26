@@ -66,11 +66,10 @@ ${uniqueInterests.map((interest) => `'${interest}'`).join(",\n  ")}
         display: "flex",
         fontFamily: "'Fira Code', monospace",
         color: "#d4d4d4",
-        padding: "20px",
         borderRadius: "8px",
         alignItems: "flex-start",
       }}
-      className="overflow-y-auto"
+      className="overflow-y-auto lg:p-5 p-2 max-lg:w-[500px]"
     >
       <Lines content={codeContent} />
 

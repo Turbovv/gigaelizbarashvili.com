@@ -30,10 +30,9 @@ ${formattedHobbies}
       style={{
         display: "flex",
         fontFamily: "'Fira Code', monospace",
-        padding: "20px",
         color: "#d4d4d4",
-        paddingLeft: "30px",
       }}
+      className="lg:p-5 lg:pl-8 p-3 pl-3 max-lg:w-[400px]"
     >
       <Lines content={content} />
 
