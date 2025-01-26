@@ -3,6 +3,7 @@ import { useParams } from "next/navigation";
 import { api } from "~/trpc/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 export default function StackDetailsPage() {
   const router = useRouter();
@@ -21,12 +22,14 @@ export default function StackDetailsPage() {
       <div
         style={{
           maxHeight: "700px",
-          overflowY: "auto",
         }}
-        className="flex justify-center items-center p-4"
+        className="flex justify-center items-center p-4 custom-scroll"
       >
         {project && (
           <div className="max-w-6xl h-[600px] rounded-lg shadow-md p-6 flex flex-col space-y-4">
+               <button onClick={() => history.back()}>
+            <ArrowLeft />
+          </button>
             <img
               src={project.url}
               alt={project.name}
