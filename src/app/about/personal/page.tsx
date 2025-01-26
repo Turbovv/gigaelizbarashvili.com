@@ -55,7 +55,7 @@ ${formattedHobbies}
         </p>
         <br />
         <p style={{ color: "rgb(145, 180, 213)", fontStyle: "italic" }}>
-          let <span className="text-white">hobbies</span> = [
+          let <span className="text-white">hobbies</span> = <span style={{color: "rgb(166, 172, 205)"}}>[</span>
         </p>
         <div
           style={{
@@ -83,7 +83,7 @@ ${formattedHobbies}
             </div>
           ))}
         </div>
-        <p>];</p>
+        <p style={{color: "rgb(166, 172, 205)"}}>];</p>
       </div>
     </div>
   );

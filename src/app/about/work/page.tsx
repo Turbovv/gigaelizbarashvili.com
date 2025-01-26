@@ -85,21 +85,21 @@ ${uniqueInterests.map((interest) => `'${interest}'`).join(",\n  ")}
             // Top Skills
           </p>
           <p style={{ color: "rgb(145, 180, 213)" }}>
-            const <span className="text-white">skills</span> = &#123;
+            const <span className="text-white">skills</span> = <span style={{color: "rgb(166, 172, 205)"}}>&#123;</span>
           </p>
           <div style={{ paddingLeft: "20px" }}>
             <p>
-              <span style={{ color: "rgb(173, 215, 255)" }}>languages</span>: [
+              <span style={{ color: "rgb(173, 215, 255)" }}>languages</span>: <span style={{color: "rgb(166, 172, 205)"}}>[</span>
               <span style={{ color: "rgb(93, 228, 199)" }}>
                 {uniqueSkills.languages.map(
                   (lang, idx) =>
                     `'${lang}'${idx < uniqueSkills.languages.length - 1 ? ", " : ""}`
                 )}
               </span>
-              ],
+              <span style={{color: "rgb(166, 172, 205)"}}>]</span>
             </p>
             <p>
-              <span style={{ color: "rgb(173, 215, 255)" }}>frameworks</span>: [
+              <span style={{ color: "rgb(173, 215, 255)" }}>frameworks</span>: <span style={{color: "rgb(166, 172, 205)"}}>[</span>
             </p>
             <div style={{ paddingLeft: "20px" }}>
               {uniqueSkills.frameworks.map((framework, idx) => (
@@ -110,9 +110,9 @@ ${uniqueInterests.map((interest) => `'${interest}'`).join(",\n  ")}
                 </p>
               ))}
             </div>
-            <p>],</p>
+            <p style={{color: "rgb(166, 172, 205)"}}>],</p>
             <p>
-              <span style={{ color: "rgb(173, 215, 255)" }}>databases</span>: [
+              <span style={{ color: "rgb(173, 215, 255)" }}>databases</span>:  <span style={{color: "rgb(166, 172, 205)"}}>[,</span>
               <span style={{ color: "rgb(93, 228, 199)" }}>
                 {uniqueSkills.databases.map(
                   (db, idx) =>
@@ -122,11 +122,11 @@ ${uniqueInterests.map((interest) => `'${interest}'`).join(",\n  ")}
               ],
             </p>
             <p>
-              <span style={{ color: "rgb(173, 215, 255)" }}>tools</span>: [
+              <span style={{ color: "rgb(173, 215, 255)" }}>tools</span>: <span style={{color: "rgb(166, 172, 205)"}}>[,</span>
               <span style={{ color: "rgb(93, 228, 199)" }}>
                 {uniqueSkills.tools.map((tool, idx) => `'${tool}'`).join(", ")}
               </span>
-              ],
+              <span style={{color: "rgb(166, 172, 205)"}}>],</span>
             </p>
           </div>
           <p style={{ color: "#9cdcfe" }}>&#125;</p><br />
@@ -135,7 +135,7 @@ ${uniqueInterests.map((interest) => `'${interest}'`).join(",\n  ")}
           // Fun Facts
           </p>
           <p style={{ color: "rgb(145, 180, 213)" }}>
-            const <span style={{ color: "rgb(145, 180, 213)" }}>interests</span> = [
+            const <span style={{ color: "rgb(145, 180, 213)" }}>interests</span> =   <span style={{color: "rgb(166, 172, 205)"}}>[</span>
           </p>
           <div style={{ paddingLeft: "20px" }}>
             {uniqueInterests.map((interest, idx) => (
@@ -146,7 +146,7 @@ ${uniqueInterests.map((interest) => `'${interest}'`).join(",\n  ")}
               </p>
             ))}
           </div>
-          <p>];</p>
+          <p style={{color: "rgb(166, 172, 205)"}}>];</p>
         </div>
       </div>
     </div>

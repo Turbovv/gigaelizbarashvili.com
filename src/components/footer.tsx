@@ -26,7 +26,7 @@ export default function Footer() {
     ];
 
     return (
-        <div className="relative  px-2 max-lg:py-16 flex items-center gap-1">
+        <div className="relative  px-2 max-lg:py-5 custom-scroll flex items-center gap-1">
             <div className="grid absolute w-full">
                 <span className="text-sm font-mono text-gray-500 max-lg:hidden">~/main</span>
 

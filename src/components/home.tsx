@@ -115,7 +115,7 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
       }}
     >
       <div className="relative bg-gradient-to-tr from-black to-neutral-800 text-gray-300 lg:rounded-lg shadow-lg border border-gray-700 h-full w-full max-w-full max-h-full">
-        <div className="max-lg:hidden flex items-center px-4 py-2">
+        <div className=" flex items-center px-4 py-2">
           <Header onFullscreenToggle={toggleFullscreen} onClose={resetTerminal} />
         </div>
 
