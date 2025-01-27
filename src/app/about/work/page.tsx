@@ -3,11 +3,12 @@ import SkillsSection from "~/components/work/skills-section";
 import { api } from "../../../trpc/react";
 import Lines from "../lines";
 import InterestsSection from "~/components/work/interests-section";
+import { ClipLoader } from "react-spinners";
 export default function Personal() {
   const { data: skillsData, isLoading: isLoadingSkills, error: skillsError } = api.skills.getSkills.useQuery();
   const { data: interestsData, isLoading: isLoadingInterests, error: interestsError } = api.interests.getInterests.useQuery();
 
-  if (isLoadingSkills || isLoadingInterests) return <div>Loading...</div>;
+  if (isLoadingSkills || isLoadingInterests) return <div className="flex justify-center items-center h-20"><ClipLoader color="#5de4c7" /></div>;
   if (skillsError || interestsError) return <div>Error: {skillsError?.message || interestsError?.message}</div>;
 
   const skills = skillsData?.reduce(

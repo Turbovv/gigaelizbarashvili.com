@@ -4,6 +4,8 @@ import { useSession } from "next-auth/react";
 import { api } from "~/trpc/react";
 import CommentForm from "~/components/comments/comment-form";
 import CommentList from "~/components/comments/comment-list";
+import { ClipLoader } from "react-spinners";
+import { useInView } from "react-intersection-observer";
 
 export default function GuestBook() {
   const [content, setContent] = useState("");
@@ -51,7 +53,12 @@ export default function GuestBook() {
     }
   };
 
-  if (isLoading) return <div>Loading comments...</div>;
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  if (isLoading) return <div className="flex justify-center items-center h-20"><ClipLoader color="#5de4c7" /></div>;
   if (isError) return <div>Error loading comments</div>;
 
   return (
@@ -63,7 +70,11 @@ export default function GuestBook() {
         handleSubmit={handleSubmit}
         session={session}
       />
-      <CommentList comments={comments} session={session} handleDelete={handleDelete} />
+      <div ref={ref}>
+        {inView && (
+          <CommentList comments={comments} session={session} handleDelete={handleDelete} />
+        )}
+      </div>
     </>
   );
 }

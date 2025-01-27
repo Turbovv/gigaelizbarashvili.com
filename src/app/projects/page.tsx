@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
 import { api } from "~/trpc/react";
+import { ClipLoader } from "react-spinners";
 
 export default function Page() {
-  const { data: projectsData } = api.projects.getProjects.useQuery();
+  const { data: projectsData, isLoading, } = api.projects.getProjects.useQuery();
+  if (isLoading) return <div className="flex justify-center items-center h-20"><ClipLoader color="#5de4c7" /></div>;
 
   return (
     <div
