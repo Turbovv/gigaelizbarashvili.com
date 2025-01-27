@@ -4,6 +4,7 @@ import { api } from "~/trpc/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { ClipLoader } from "react-spinners";
 
 export default function StackDetailsPage() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function StackDetailsPage() {
     id: projectid,
   });
 
-  if (isLoading) return <div className="text-center p-4">Loading...</div>;
+  if (isLoading) return <div className="flex justify-center items-center h-20"><ClipLoader color="#5de4c7" /></div>;
 
   return (
     <>
