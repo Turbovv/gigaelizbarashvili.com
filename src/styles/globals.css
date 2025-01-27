@@ -43,3 +43,23 @@ body {
     width: 0; /* Ensures no space is taken up horizontally */
   }
   
+.opacity-5 {
+  opacity: 0.05;
+}
+
+.bg-grain-noise {
+  background-image: url(/grain.webp);
+}
+
+.animate-grain {
+  animation: animate-grain 1s steps(10) infinite;
+}
+
+@keyframes animate-grain {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}

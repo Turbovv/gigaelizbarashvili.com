@@ -28,6 +28,10 @@ export default function RootLayout({
         }}
         className="min-h-screen"
       >
+        <div
+          className="fixed h-[300%] w-[300%] bg-grain-noise opacity-5 animate-grain pointer-events-none top-0"
+          aria-hidden="true"
+        ></div>
         <AnimatedCircles />
         <SessionProvider>
           <TRPCReactProvider>
