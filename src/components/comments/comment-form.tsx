@@ -3,7 +3,7 @@ import SignIn from "~/components/sign-in";
 export default function CommentForm({ content, setContent, loading, handleSubmit, session }: any) {
   return (
     <form className='mb-2 flex flex-col gap-2 text-sm lg:px-6 lg:flex-row lg:items-center max-lg:p-2' onSubmit={handleSubmit}>
-      <p className='truncate lg:w-36 text-[#898989] '>
+      <p className='truncate lg:w-32 text-[#898989] '>
         <span className='text-[#5de4c7]'>~</span>/{session ? session?.user?.name?.toLowerCase().replace(/\s/g, '-') : 'guest'}
       </p>
       <p className='hidden lg:block text-[#898989]'>:</p>

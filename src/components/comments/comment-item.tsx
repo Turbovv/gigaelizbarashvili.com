@@ -6,7 +6,7 @@ export default function CommentItem({ comment, session, handleDelete }: any) {
   return (
     <li className='flex flex-col lg:items-center gap-1 py-1 lg:flex-row lg:px-6 lg:gap-2 lg:border-y-0 lg:py-0 group'>
       {comment && comment.createdByName && (
-        <p className='flex-1 truncate lg:w-36 lg:flex-none text-[#898989]'>
+        <p className='flex-1 truncate lg:w-32 lg:flex-none text-[#898989]'>
           <span className='text-[#5de4c7]'>~</span>/{comment.createdByName.toLowerCase().replace(/\s/g, '-')}
         </p>
       )}
