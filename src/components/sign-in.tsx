@@ -17,7 +17,7 @@ export default function SignIn() {
         onClick={() =>
           signIn("github")
         }
-        className="flex items-center gap-2"
+        className="flex items-center gap-2 max-lg:w-full max-lg:justify-center max-lg:bg-gray-400 max-lg:text-black"
         style={{  fontFamily: "'Fira Code', monospace",}}
         >
         <Github className="w-4 fill-gray-400"  />

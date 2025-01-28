@@ -48,7 +48,8 @@ const skills = {
   tools: [${uniqueSkills.tools.map((tool) => `'${tool}'`)}],
 };
 
-const interests =[
+const interests =
+[
 ${uniqueInterests.map((interest) => `'${interest}'`).join(",\n  ")}
 ]
 ;
