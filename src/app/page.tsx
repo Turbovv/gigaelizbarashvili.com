@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <pre className="flex h-full flex-col items-center justify-center space-y-2.5 whitespace-pre-wrap md:space-y-5">
-      <div className="w-full max-w-lg max-lg:p-6 space-y-8 dark:text-gray-300">
+      <div className="w-full max-w-lg max-lg:p-6 space-y-6 dark:text-gray-300">
       <div className="text-base">
         Hey, I’m Giga. I’m a passionate{" "}
         <Link target="_blanket" href={"https://github.com/Turbovv"} className="dark:text-blue-400 text-blue-700 hover:underline font-semibold">software developer</Link>
@@ -35,6 +35,25 @@ export default function HomePage() {
         <span className="font-semibold text-primary">grow</span>, contribute my
         skills, and help create products that matter.
       </div>
+      
+      <div className="flex space-x-4">
+          <Link
+            href="https://www.linkedin.com/in/turbovv/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+          >
+            LinkedIn
+          </Link>
+          <Link
+            href="https://github.com/Turbovv"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900 transition"
+          >
+            GitHub
+          </Link>
+        </div>
     </div>
     </pre>
   );
