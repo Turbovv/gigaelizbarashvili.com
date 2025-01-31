@@ -1,12 +1,12 @@
 import "~/styles/globals.css";
 
-import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { SessionProvider } from "next-auth/react";
 import Home from "~/components/home";
 import AnimatedCircles from "~/components/animated-circles";
+import { ThemeProvider } from "~/provider/theme-provider";
 
 export const metadata: Metadata = {
   title: "Giga Elizbarashvili",
@@ -14,11 +14,10 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/terminal.png" }],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
+    <html lang="en" suppressHydrationWarning>
+      <head />
       <body
         style={{
           backgroundImage:
@@ -33,16 +32,23 @@ export default function RootLayout({
           aria-hidden="true"
         ></div>
         <div className="max-lg:hidden">
-        <AnimatedCircles />
+          <AnimatedCircles />
         </div>
         <SessionProvider>
           <TRPCReactProvider>
-            <div className="hidden max-lg:block">
-              <Home>{children}</Home>
-            </div>
-            <div className="max-lg:hidden">
-              <Home>{children}</Home>
-            </div>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <div className="hidden max-lg:block">
+                <Home>{children}</Home>
+              </div>
+              <div className="max-lg:hidden">
+                <Home>{children}</Home>
+              </div>
+            </ThemeProvider>
           </TRPCReactProvider>
         </SessionProvider>
       </body>
