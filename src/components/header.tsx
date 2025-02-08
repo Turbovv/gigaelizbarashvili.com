@@ -1,3 +1,5 @@
+import { Github, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 interface HeaderProps {
   onFullscreenToggle: () => void;
@@ -22,10 +24,28 @@ const Header: React.FC<HeaderProps> = ({ onFullscreenToggle, onClose }) => {
           onClick={onFullscreenToggle}
         ></div>
       </div>
-   <span className=" text-gray-500 max-lg:hidden">Terminal</span>
    <div className="text-center mx-auto  lg:hidden text-gray-400">
         Giga Elizbarashvili
       </div>
+      <div className="flex space-x-4">
+      <Link
+          href="https://www.linkedin.com/in/turbovv/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-500"
+        >
+          <Linkedin size={24} />
+        </Link>
+
+        <Link
+          href="https://github.com/Turbovv"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-gray-200"
+        >
+          <Github size={24} />
+        </Link>
+        </div>
     </div>
   );
 };

@@ -35,25 +35,6 @@ export default function HomePage() {
         <span className="font-semibold text-primary">grow</span>, contribute my
         skills, and help create products that matter.
       </div>
-      
-      <div className="flex space-x-4">
-          <Link
-            href="https://www.linkedin.com/in/turbovv/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-          >
-            LinkedIn
-          </Link>
-          <Link
-            href="https://github.com/Turbovv"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900 transition"
-          >
-            GitHub
-          </Link>
-        </div>
     </div>
     </pre>
   );
