@@ -1,0 +1,32 @@
+{
+  "HomePage": {
+    "intro": {
+      "greeting": "Hey, I’m Giga. I’m a passionate",
+      "role": "software developer",
+      "description": "project creator and lifelong learner. I’m currently growing my expertise in",
+      "tech_react": "React",
+      "tech_typescript": "TypeScript",
+      "goal": "building projects that are dynamic, scalable, and impactful."
+    },
+    "experience": {
+      "transition_statement": "Before transitioning to",
+      "tech_react": "React",
+      "past_experience": "I spent 2 years developing with",
+      "tech_vue": "Vue.js",
+      "contribution": "crafting intuitive interfaces and enhancing user experiences."
+    },
+    "career_goals": {
+      "statement": "I’m currently looking for opportunities to join a team where I can ",
+      "growth": "grow",
+      "contribute": ", contribute my skills, and help create products that matter."
+    },
+    "hobbies": {
+      "intro": "In my free time, I love",
+      "gaming": "playing video games",
+      "walking": "walking outside",
+      "music": "listening to music",
+      "socializing": "talking to friends"
+    },
+    "connector": "and"
+  }
+}

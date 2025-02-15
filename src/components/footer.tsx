@@ -1,15 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 export default function Footer() {
     const pathname = usePathname();
-    const [activeItem, setActiveItem] = useState<string>(pathname);
+    const [activeItem, setActiveItem] = useState<string>("/");
+
+    const getNormalizedPath = (path: string) => {
+        return path.replace(/^\/(en|ka)/, "") || "/";
+    };
+
+    useEffect(() => {
+        setActiveItem(getNormalizedPath(pathname));
+    }, [pathname]);
 
     const handleSetActiveItem = (path: string) => {
-        setActiveItem(path);
+        setActiveItem(getNormalizedPath(path));
     };
 
     const linkClass = (path: string) =>
@@ -26,12 +34,12 @@ export default function Footer() {
     ];
 
     return (
-        <div className="relative  px-2 max-lg:py-5 custom-scroll flex items-center gap-1">
+        <div className="relative px-2 max-lg:py-5 custom-scroll flex items-center gap-1">
             <div className="grid absolute w-full">
                 <span className="text-sm font-mono text-gray-500 max-lg:hidden">~/main</span>
 
                 <div className="flex gap-2 overflow-x-auto sm:overflow-x-hidden whitespace-nowrap sm:whitespace-normal">
-                    <span className="text-lg font-mono px-2 rounded-sm  bg-gray-400 text-black">
+                    <span className="text-lg font-mono px-2 rounded-sm bg-gray-400 text-black">
                         cmd
                     </span>
                     {links.map((link) => (

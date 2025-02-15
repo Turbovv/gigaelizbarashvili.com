@@ -3,6 +3,7 @@
 import React, { useState, useEffect, ReactNode, useRef } from "react";
 import Header from "./header";
 import Footer from "./footer";
+import LanguageSwitcher from "./language-switcher";
 
 interface TerminalProps {
   children: ReactNode;
@@ -117,9 +118,10 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
       <div className="relative bg-gradient-to-tr from-black to-neutral-800 text-gray-300 lg:rounded-lg shadow-lg border border-gray-700 h-full w-full max-w-full max-h-full">
         <div className=" flex items-center px-4 py-2">
           <Header onFullscreenToggle={toggleFullscreen} onClose={resetTerminal} />
+          <LanguageSwitcher />
         </div>
 
-        <div className="h-[90%] overflow-auto">
+        <div className="h-[87%] overflow-auto">
           {children}
         </div>
 
