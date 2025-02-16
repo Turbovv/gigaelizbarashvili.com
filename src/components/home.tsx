@@ -121,7 +121,7 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
           <LanguageSwitcher />
         </div>
 
-        <div className="h-[87%] overflow-auto">
+        <div className="h-[88%] overflow-auto">
           {children}
         </div>
 

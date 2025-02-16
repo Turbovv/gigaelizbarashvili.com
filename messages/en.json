@@ -28,5 +28,11 @@
       "socializing": "talking to friends"
     },
     "connector": "and"
+  },
+  "Footer": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "guestBook": "Guest Book"
   }
 }
