@@ -8,15 +8,22 @@ type ArrayToUnion<T extends readonly string[]> = T[number];
 
 export type LocalesType = ArrayToUnion<typeof locales>;
 
-export default getRequestConfig(async ({ locale }) => {
+export default getRequestConfig(async () => {
+  // Await headers() if it returns a promise
+  const headersList = await headers();
+  const detectedLocale = headersList.get("x-next-intl-locale");
 
-  const headersList = await headers(); 
+  // Ensure the locale is valid; otherwise, fallback to "en"
+  const finalLocale = locales.includes(detectedLocale as string)
+    ? detectedLocale
+    : "en";
 
-  const detectedLocale = headersList.get("X-NEXT-INTL-LOCALE") || locale;
-
-  if (!locales.includes(detectedLocale as string)) return notFound();
-
-  return {
-    messages: (await import(`../messages/${detectedLocale}.json`)).default,
-  };
+  try {
+    return {
+      messages: (await import(`../messages/${finalLocale}.json`)).default,
+    };
+  } catch (error) {
+    console.error(`Error loading locale messages for ${finalLocale}:`, error);
+    return notFound();
+  }
 });
