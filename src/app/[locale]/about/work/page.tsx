@@ -1,6 +1,6 @@
 "use client";
 import SkillsSection from "~/components/work/skills-section";
-import { api } from "../../../trpc/react";
+import { api } from "../../../../trpc/react";
 import Lines from "../lines";
 import InterestsSection from "~/components/work/interests-section";
 import { ClipLoader } from "react-spinners";

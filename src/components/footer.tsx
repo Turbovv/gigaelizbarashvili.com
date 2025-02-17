@@ -7,15 +7,13 @@ import { useTranslations } from "next-intl";
 
 export default function Footer() {
   const pathname = usePathname();
-  const [activeItem, setActiveItem] = useState<string>("/");
+  const [activeItem, setActiveItem] = useState<string>(pathname);
   const t = useTranslations("Footer");
 
-  const getNormalizedPath = (path: string) => {
-    return path.replace(/^\/(en|ka)/, "") || "/";
-  };
+  const locale = pathname.split("/")[1] || "en";
 
   useEffect(() => {
-    setActiveItem(getNormalizedPath(pathname));
+    setActiveItem(pathname);
   }, [pathname]);
 
   const linkClass = (path: string) =>
@@ -26,10 +24,10 @@ export default function Footer() {
     }`;
 
   const links = [
-    { label: t("home"), path: "/" },
-    { label: t("about"), path: "/about/work" },
-    { label: t("projects"), path: "/projects" },
-    { label: t("guestBook"), path: "/guest-book" },
+    { label: t("home"), path: `/${locale}` },
+    { label: t("about"), path: `/${locale}/about/work` },
+    { label: t("projects"), path: `/${locale}/projects` },
+    { label: t("guestBook"), path: `/${locale}/guest-book` },
   ];
 
   return (
@@ -44,7 +42,11 @@ export default function Footer() {
             cmd
           </span>
           {links.map((link) => (
-            <Link key={link.path} href={link.path} className={linkClass(link.path)}>
+            <Link
+              key={link.path}
+              href={link.path}
+              className={linkClass(link.path)}
+            >
               {link.label}
             </Link>
           ))}
