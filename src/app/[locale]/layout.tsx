@@ -3,10 +3,16 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { PropsWithChildren } from "react";
 
+type LocaleLayoutProps = {
+  params: Promise<{ locale: string }>;
+};
+
 export default async function LocaleLayout({
   children,
-  params: { locale },
-}: PropsWithChildren<{ params: { locale: string } }>) {
+  params,
+}: PropsWithChildren<LocaleLayoutProps>) {
+  const { locale } = await params;
+
   let messages;
   try {
     messages = await getMessages({ locale });
