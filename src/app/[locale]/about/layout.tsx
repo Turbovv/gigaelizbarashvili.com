@@ -8,6 +8,8 @@ export default function Layout({ children }: { children: ReactNode }) {
     const pathname = usePathname();
     const [activeItem, setActiveItem] = useState<string>(pathname);
 
+    const locale = pathname.split("/")[1] || "en";
+
     const handleSetActiveItem = (path: string) => {
         setActiveItem(path);
     };
@@ -19,9 +21,9 @@ export default function Layout({ children }: { children: ReactNode }) {
         }`;
 
     const links = [
-        { label: "gear.ts", path: "/about/gear" },
-        { label: "personal.ts", path: "/about/personal" },
-        { label: "work.ts", path: "/about/work" },
+        { label: "gear.ts", path: `/${locale}/about/gear` },
+        { label: "personal.ts", path: `/${locale}/about/personal` },
+        { label: "work.ts", path: `/${locale}/about/work` },
     ];
 
     return (
