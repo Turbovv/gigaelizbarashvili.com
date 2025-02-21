@@ -3,7 +3,7 @@ import React from "react";
 import { api } from "~/trpc/react";
 import Lines from "../lines";
 
-export default function Page() {
+export default function Personal() {
   const { data: hobbiesData } = api.hobbies.getHobbies.useQuery();
 
   const formattedHobbies = hobbiesData

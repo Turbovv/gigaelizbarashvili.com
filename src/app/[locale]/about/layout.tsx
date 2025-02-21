@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useState, ReactNode } from "react";
 import { usePathname } from "next/navigation";
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function AboutLayout({ children }: { children: ReactNode }) {
     const pathname = usePathname();
     const [activeItem, setActiveItem] = useState<string>(pathname);
 

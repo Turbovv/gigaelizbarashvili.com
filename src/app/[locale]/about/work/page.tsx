@@ -4,7 +4,7 @@ import { api } from "../../../../trpc/react";
 import Lines from "../lines";
 import InterestsSection from "~/components/work/interests-section";
 import { ClipLoader } from "react-spinners";
-export default function Personal() {
+export default function Work() {
   const { data: skillsData, isLoading: isLoadingSkills, error: skillsError } = api.skills.getSkills.useQuery();
   const { data: interestsData, isLoading: isLoadingInterests, error: interestsError } = api.interests.getInterests.useQuery();
 

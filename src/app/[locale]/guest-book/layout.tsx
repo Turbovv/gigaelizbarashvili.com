@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function ProjectsLayout({
+export default function GuestBookLayout({
   children,
 }: {
   children: React.ReactNode;

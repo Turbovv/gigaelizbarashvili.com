@@ -3,7 +3,7 @@ import { api } from "~/trpc/react";
 import Lines from "../lines";
 import DataSection from "./_components/data-section";
 
-export default function Page() {
+export default function Gear() {
   const { data: softwaresData = [] } = api.softwares.getSoftwares.useQuery();
   const { data: hostingsData = [] } = api.hostings.getHostings.useQuery();
 
