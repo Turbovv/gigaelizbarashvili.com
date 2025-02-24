@@ -6,7 +6,7 @@ export default function HomePage() {
 
   return (
     <pre className="flex h-full flex-col items-center justify-center space-y-2.5 whitespace-pre-wrap md:space-y-5">
-      <div className="w-full max-w-lg max-lg:p-6 space-y-6 dark:text-gray-300">
+      <div className="w-full max-w-lg mt-16 max-lg:p-6 space-y-6 dark:text-gray-300">
         <div className="text-base">
           {t("intro.greeting")}{" "}
           <Link

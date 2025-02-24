@@ -1,4 +1,4 @@
-import { Github, Linkedin } from "lucide-react";
+import { FileText, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 
 interface HeaderProps {
@@ -24,10 +24,18 @@ const Header: React.FC<HeaderProps> = ({ onFullscreenToggle, onClose }) => {
           onClick={onFullscreenToggle}
         ></div>
       </div>
-   <div className="text-center mx-auto  lg:hidden text-gray-400">
+   <div className="lg:hidden text-gray-400">
         Giga Elizbarashvili
       </div>
-      <div className="flex space-x-4">
+      <div className="flex space-x-4 items-center">
+        <a
+        href="/cv.pdf"
+        download="Giga Elizbarashvili.pdf"
+        className="flex px-2 py-2 bg-gray-800 text-white underline font-medium rounded-lg"
+      >
+           <FileText  size={20} />
+        CV
+      </a>
       <Link
           href="https://www.linkedin.com/in/turbovv/"
           target="_blank"
