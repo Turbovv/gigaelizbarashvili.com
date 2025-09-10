@@ -132,7 +132,7 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
           <Header onFullscreenToggle={toggleFullscreen} onClose={resetTerminal} />
           <LanguageSwitcher />
         </div>
-        <div className="flex-1 overflow-auto">
+        <div className="h-[88%] overflow-auto">
           {children}
         </div>
         <Footer />

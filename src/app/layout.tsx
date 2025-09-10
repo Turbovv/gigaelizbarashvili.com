@@ -7,6 +7,7 @@ import AnimatedCircles from "~/components/animated-circles";
 import { ThemeProvider } from "~/provider/theme-provider";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import LetterGlitch from "~/components/LetterGlitch";
 
 export const metadata: Metadata = {
   title: "Giga Elizbarashvili",
@@ -21,16 +22,22 @@ export default async function RootLayout({ children, params: { locale } }: { chi
     <html lang={locale} suppressHydrationWarning>
       <head />
       <body
-        style={{
-          backgroundImage: "linear-gradient(90deg, #444 2px, transparent 0), linear-gradient(180deg, #444 2px, transparent 0)",
-          backgroundSize: "5vh 5vh",
-          backgroundColor: "rgb(61, 61, 61)",
-        }}
+        // style={{
+        //   backgroundImage: "linear-gradient(90deg, #444 2px, transparent 0), linear-gradient(180deg, #444 2px, transparent 0)",
+        //   backgroundSize: "5vh 5vh",
+        //   backgroundColor: "rgb(61, 61, 61)",
+        // }}
         className="min-h-screen"
       >
         <div className="fixed h-[300%] w-[300%] bg-grain-noise opacity-5 animate-grain pointer-events-none top-0 max-lg:hidden" aria-hidden="true"></div>
         <div className="max-lg:hidden">
-          <AnimatedCircles />
+        <LetterGlitch
+            glitchSpeed={50}
+            centerVignette={true}
+            outerVignette={true}
+            smooth={true} glitchColors={['#2b4539', '#61dca3', '#61b3dc']}  />
+            
+          {/* <AnimatedCircles /> */}
         </div>
         <SessionProvider>
           <NextIntlClientProvider messages={messages}>
