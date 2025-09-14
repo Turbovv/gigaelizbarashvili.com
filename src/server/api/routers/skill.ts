@@ -6,9 +6,8 @@ import {
   publicProcedure,
 } from "~/server/api/trpc";
 import { skills } from "~/server/db/schema";
-import { eq } from "drizzle-orm"
+import { eq } from "drizzle-orm";
 import { db } from "~/server/db";
-
 
 export const skillsRouter = createTRPCRouter({
   getSkills: publicProcedure.query(async ({ ctx }) => {

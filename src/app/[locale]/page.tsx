@@ -51,7 +51,7 @@ export default function HomePage() {
           {t("connector")}{" "}
           <span className="font-semibold text-primary">{t("hobbies.socializing")}</span>.
         </div>
-        
+
         <div className="text-base">
           {t("career_goals.statement")}
           <span className="font-semibold text-primary">{t("career_goals.growth")}</span>

@@ -17,10 +17,9 @@ export default function Footer() {
   }, [pathname]);
 
   const linkClass = (path: string) =>
-    `text-lg font-mono px-2 transition-all duration-200 ${
-      activeItem === path
-        ? "bg-gray-400 text-black"
-        : "text-gray-500 hover:text-gray-300"
+    `text-lg font-mono px-2 transition-all duration-200 ${activeItem === path
+      ? "bg-gray-400 text-black"
+      : "text-gray-500 hover:text-gray-300"
     }`;
 
   const links = [

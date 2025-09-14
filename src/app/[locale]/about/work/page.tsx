@@ -29,11 +29,11 @@ export default function Work() {
 
   const uniqueSkills = skills
     ? {
-        languages: Array.from(new Set(skills.languages.flat())),
-        frameworks: Array.from(new Set(skills.frameworks.flat())),
-        databases: Array.from(new Set(skills.databases.flat())),
-        tools: Array.from(new Set(skills.tools.flat())),
-      }
+      languages: Array.from(new Set(skills.languages.flat())),
+      frameworks: Array.from(new Set(skills.frameworks.flat())),
+      databases: Array.from(new Set(skills.databases.flat())),
+      tools: Array.from(new Set(skills.tools.flat())),
+    }
     : { languages: [], frameworks: [], databases: [], tools: [] };
 
   const uniqueInterests = interestsData ? Array.from(new Set(interestsData.flat())) : [];

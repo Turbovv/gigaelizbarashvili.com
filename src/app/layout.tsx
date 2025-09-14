@@ -31,12 +31,12 @@ export default async function RootLayout({ children, params: { locale } }: { chi
       >
         <div className="fixed h-[300%] w-[300%] bg-grain-noise opacity-5 animate-grain pointer-events-none top-0 max-lg:hidden" aria-hidden="true"></div>
         <div className="max-lg:hidden">
-        <LetterGlitch
+          <LetterGlitch
             glitchSpeed={50}
             centerVignette={true}
             outerVignette={true}
-            smooth={true} glitchColors={['#2b4539', '#61dca3', '#61b3dc']}  />
-            
+            smooth={true} glitchColors={['#2b4539', '#61dca3', '#61b3dc']} />
+
           {/* <AnimatedCircles /> */}
         </div>
         <SessionProvider>

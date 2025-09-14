@@ -112,11 +112,11 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
       style={{
         ...(size.width > 1024
           ? {
-        left: position.x,
-        top: position.y,
-        width: `${size.width}px`,
-        height: `${size.height}px`,
-            }
+            left: position.x,
+            top: position.y,
+            width: `${size.width}px`,
+            height: `${size.height}px`,
+          }
           : {}),
       }}
     >

@@ -49,9 +49,8 @@ export default function LikeButton({ commentId }: { commentId: number }) {
       <span className="text-[#898989]">{likeCount}</span>
       <button onClick={handleLike}>
         <Heart
-          className={`w-4 h-4 transition-colors ${
-            liked ? "fill-[#898989] text-[#898989]" : "fill-none text-gray-500"
-          }`}
+          className={`w-4 h-4 transition-colors ${liked ? "fill-[#898989] text-[#898989]" : "fill-none text-gray-500"
+            }`}
         />
       </button>
     </div>
