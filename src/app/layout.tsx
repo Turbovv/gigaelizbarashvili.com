@@ -27,10 +27,10 @@ export default async function RootLayout({ children, params: { locale } }: { chi
         //   backgroundSize: "5vh 5vh",
         //   backgroundColor: "rgb(61, 61, 61)",
         // }}
-        className="min-h-screen"
+        className="min-h-screen overflow-hidden"
       >
-        <div className="fixed h-[300%] w-[300%] bg-grain-noise opacity-5 animate-grain pointer-events-none top-0 max-lg:hidden" aria-hidden="true"></div>
-        <div className="max-lg:hidden">
+        <div className="pointer-events-none fixed inset-0 bg-grain-noise opacity-5 animate-grain max-lg:hidden" aria-hidden="true"></div>
+        <div className="pointer-events-none fixed inset-0 max-lg:hidden" aria-hidden="true">
           <LetterGlitch
             glitchSpeed={50}
             centerVignette={true}
