@@ -5,7 +5,7 @@ import { SessionProvider } from "next-auth/react";
 import Home from "~/components/home";
 import AnimatedCircles from "~/components/animated-circles";
 import { ThemeProvider } from "~/provider/theme-provider";
-import { getMessages } from "next-intl/server";
+import { getMessages, getLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import LetterGlitch from "~/components/LetterGlitch";
 
@@ -15,8 +15,9 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/terminal.png" }],
 };
 
-export default async function RootLayout({ children, params: { locale } }: { children: React.ReactNode; params: { locale: string } }) {
-  const messages = await getMessages({ locale });
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getLocale();
+  const messages = await getMessages();
 
   return (
     <html lang={locale} suppressHydrationWarning>

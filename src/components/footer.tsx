@@ -10,7 +10,7 @@ export default function Footer() {
   const [activeItem, setActiveItem] = useState<string>(pathname);
   const t = useTranslations("Footer");
 
-  const locale = pathname.split("/")[1] || "en";
+  const locale = pathname.split("/")[1] ?? "en";
 
   useEffect(() => {
     setActiveItem(pathname);

@@ -15,7 +15,7 @@ export default function ProjectDetailsPage() {
     id: projectid,
   });
 
-  const locale = pathname.split("/")[1] || "en";
+  const locale = pathname.split("/")[1] ?? "en";
 
   if (isLoading)
     return (

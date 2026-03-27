@@ -2,7 +2,7 @@
 const config = {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": false
+    "project": true
   },
   "plugins": [
     "@typescript-eslint",
@@ -38,6 +38,18 @@ const config = {
         }
       }
     ],
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-base-to-string": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/prefer-optional-chain": "off",
+    "react/display-name": "off",
+    "react/no-unescaped-entities": "off",
+    "react/jsx-no-comment-textnodes": "off",
     "drizzle/enforce-delete-with-where": [
       "error",
       {

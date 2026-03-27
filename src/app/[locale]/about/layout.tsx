@@ -8,7 +8,7 @@ export default function AboutLayout({ children }: { children: ReactNode }) {
     const pathname = usePathname();
     const [activeItem, setActiveItem] = useState<string>(pathname);
 
-    const locale = pathname.split("/")[1] || "en";
+    const locale = pathname.split("/")[1] ?? "en";
 
     const handleSetActiveItem = (path: string) => {
         setActiveItem(path);

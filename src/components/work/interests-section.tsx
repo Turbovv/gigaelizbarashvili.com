@@ -16,7 +16,7 @@ export default function InterestsSection({ uniqueInterests }: InterestsSectionPr
         {uniqueInterests.map((interest, idx) => (
           <p key={idx}>
             <span style={{ color: "rgb(93, 228, 199)" }}>
-              '{interest.name}'{idx < uniqueInterests.length - 1 ? "," : ""} <br />
+              {"'"}{interest.name}{"'"}{idx < uniqueInterests.length - 1 ? "," : ""} <br />
             </span>
           </p>
         ))}

@@ -12,7 +12,7 @@ export default function Projects() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const locale = pathname.split("/")[1] || "en";
+  const locale = pathname.split("/")[1] ?? "en";
 
   useEffect(() => {
     if (pathname === "/projects") {

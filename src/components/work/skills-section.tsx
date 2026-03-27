@@ -26,7 +26,7 @@ export default function SkillsSection({ uniqueSkills }: { uniqueSkills: Skills }
           {uniqueSkills.frameworks.map((framework, idx) => (
             <p key={idx}>
               <span style={{ color: "rgb(93, 228, 199)" }}>
-                '{framework}'{idx < uniqueSkills.frameworks.length - 1 ? "," : ""}
+                {"'"}{framework}{"'"}{idx < uniqueSkills.frameworks.length - 1 ? "," : ""}
               </span>
             </p>
           ))}

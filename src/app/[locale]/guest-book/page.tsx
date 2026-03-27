@@ -14,7 +14,7 @@ export default function GuestBook() {
 
   const createCommentMutation = api.comments.createComment.useMutation({
     onSuccess: () => {
-      commentsQuery.refetch();
+      void commentsQuery.refetch();
       setLoading(false);
     },
     onError: () => {
@@ -24,7 +24,7 @@ export default function GuestBook() {
 
   const deleteCommentMutation = api.comments.deleteComment.useMutation({
     onSuccess: () => {
-      commentsQuery.refetch();
+      void commentsQuery.refetch();
     },
   });
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, ReactNode, useRef } from "react";
+import React, { useState, useEffect, type ReactNode, useRef } from "react";
 import Header from "./header";
 import Footer from "./footer";
 import LanguageSwitcher from "./language-switcher";
@@ -45,7 +45,7 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        resetTerminal();
+        void resetTerminal();
       }
     };
 
@@ -78,9 +78,9 @@ const Terminal: React.FC<TerminalProps> = ({ children }) => {
 
   const toggleFullscreen = () => {
     if (isFullscreen) {
-      exitFullscreen();
+      void exitFullscreen();
     } else {
-      enterFullscreen();
+      void enterFullscreen();
     }
   };
 

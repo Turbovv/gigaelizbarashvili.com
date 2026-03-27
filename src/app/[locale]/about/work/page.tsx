@@ -9,7 +9,7 @@ export default function Work() {
   const { data: interestsData, isLoading: isLoadingInterests, error: interestsError } = api.interests.getInterests.useQuery();
 
   if (isLoadingSkills || isLoadingInterests) return <div className="flex justify-center items-center h-20"><ClipLoader color="#5de4c7" /></div>;
-  if (skillsError || interestsError) return <div>Error: {skillsError?.message || interestsError?.message}</div>;
+  if (skillsError ?? interestsError) return <div>Error: {skillsError?.message ?? interestsError?.message}</div>;
 
   const skills = skillsData?.reduce(
     (acc, skill) => {

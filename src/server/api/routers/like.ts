@@ -42,7 +42,7 @@ export const likesRouter = createTRPCRouter({
         .from(likes)
         .where(sql`${likes.commentId} = ${input.postId}`);
 
-      const likeCount = likeCountResult[0]?.count || 0;
+      const likeCount = likeCountResult[0]?.count ?? 0;
 
       return { postId: input.postId, likes: likeCount };
     }),
